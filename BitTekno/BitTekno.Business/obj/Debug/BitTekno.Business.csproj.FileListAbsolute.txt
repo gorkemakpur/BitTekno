@@ -1,0 +1,15 @@
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\BitTekno.Business.dll.config
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\BitTekno.Business.dll
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\BitTekno.Business.pdb
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\BitTekno.data.dll
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\EntityFramework.dll
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\EntityFramework.SqlServer.dll
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\BitTekno.data.pdb
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\BitTekno.data.dll.config
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\EntityFramework.xml
+D:\.NET-project\BitTekno\BitTekno.Business\bin\Debug\EntityFramework.SqlServer.xml
+D:\.NET-project\BitTekno\BitTekno.Business\obj\Debug\BitTekno.Business.csproj.AssemblyReference.cache
+D:\.NET-project\BitTekno\BitTekno.Business\obj\Debug\BitTekno.Business.csproj.CoreCompileInputs.cache
+D:\.NET-project\BitTekno\BitTekno.Business\obj\Debug\BitTekno.Business.csproj.CopyComplete
+D:\.NET-project\BitTekno\BitTekno.Business\obj\Debug\BitTekno.Business.dll
+D:\.NET-project\BitTekno\BitTekno.Business\obj\Debug\BitTekno.Business.pdb

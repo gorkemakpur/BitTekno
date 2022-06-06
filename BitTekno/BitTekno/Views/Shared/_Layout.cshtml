@@ -1,0 +1,582 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="meta description">
+
+    <!-- Site title -->
+    <title>BitTekno</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/wwwroot/img/favicon1.ico" type="image/x-icon" />
+
+    <!-- Bootstrap CSS -->
+    <link href="~/wwwroot/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font-Awesome CSS -->
+    <link href="~/wwwroot/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- helper class css -->
+    <link href="~/wwwroot/css/helper.min.css" rel="stylesheet">
+
+    <!-- Plugins CSS -->
+    <link href="~/wwwroot/css/plugins.css" rel="stylesheet">
+
+    <!-- Main Style CSS -->
+    <link href="~/wwwroot/css/style.css" rel="stylesheet">
+    <link href="~/wwwroot/css/skin-default.css" rel="stylesheet" id="galio-skin">
+</head>
+
+<body>
+
+
+
+    <div class="wrapper">
+
+        <!-- header area start -->
+        <header>
+          
+            <!-- En üstteki gri alan -->
+            <div class="header-top-area bg-gray text-center text-md-left">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-5">
+                            <div class="header-call-action">
+                                <a href="#">
+                                    <i class="fa fa-envelope"></i>
+                                    info@website.com
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-phone"></i>
+                                    0123456789
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-7">
+                            <div class="header-top-right float-md-right float-none">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <div class="dropdown header-top-dropdown">
+                                                <a class="dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Hesabım
+                                                    <i class="fa fa-angle-down"></i>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="myaccount">
+                                                    @if (@Session["contact"] != null)
+                                                    {
+                                                    <div style="font-size:12px; text-align:center">
+                                                        @Session["contact"].ToString()
+                                                    </div>
+                                                        <a class="dropdown-item" href="@Url.Action("LogOut","Contact")">Çıkış Yap</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div style="font-size:12px; text-align:center">Hesabım</div>
+                                                        <a class="dropdown-item" href="@Url.Action("Login","Contact")">Giriş</a>
+                                                        <a class="dropdown-item" href="@Url.Action("Register","Contact")">Kayıt Ol</a>
+                                                    }
+
+                                                </div>
+                                                </div>
+                                        </li>
+                                        <!--Kullanıcı girişi yapıldıysa -->
+                                        <li>
+                                            <a href="#">İstek listem</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Cart","Basket")">Sepetim</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Ödeme</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- header middle start -->
+            <div class="header-middle-area pt-20 pb-20">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3">
+                            <div class="brand-logo">
+                                <a href="@Url.Action("Index", "Home")">
+                                    <img src="~/wwwroot/img/logo/sayfalogo.png" alt="brand logo">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- TODO : kullanıcı girişi varsa Session Basket Count yazılacak bu tamam -->
+                       
+                            <div class="col-lg-9">
+                                <div class="header-middle-right">
+                                    <div class="header-middle-block">
+                                        <div class="header-middle-searchbox">
+                                            <input type="text" placeholder="Ara...">
+                                            <button class="search-btn"><i class="fa fa-search"></i></button>
+                                        </div>
+                                        @if (Session["contact"] != null)
+                                        {
+                                    <div class="header-mini-cart" onclick="location.href='@Url.Action("Cart", "Basket")';">
+                                        <div class="mini-cart-btn">
+
+                                            <i class="fa fa-shopping-cart" onclick="location.href='@Url.Action("Cart", "Basket")';"></i>
+                                            <span class="cart-notification">@Session["BasketCount"].ToString()</span>
+
+                                        </div>
+                                        <div class="cart-total-price">
+                                            <span><strong>Sepete Git</strong></span>
+                                            
+                                        </div>
+                                    </div>
+                                        }
+
+
+                                        </div>
+
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- header middle end -->
+            <!-- main menu area start -->
+            <div class="main-header-wrapper bdr-bottom1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="main-header-inner header-2">
+                                <div class="category-toggle-wrap">
+                                    <div class="category-toggle">
+                                        Kategori
+                                        <div class="cat-icon">
+                                            <i class="fa fa-angle-down"></i>
+                                        </div>
+                                    </div>
+                                    <nav class="category-menu category-style-2">
+                                        <ul>
+                                            <li class="menu-item-has-children">
+                                                <a href="@Url.Action("Index","Department", new { d="TumTelefonlar"})"><i class="fa fa-mobile-phone"></i> Telefon ve Aksesuarlar</a>
+                                                <!-- Mega Category Menu Start -->
+                                                <ul class="category-mega-menu">
+                                                    <!--Single İtem start-->
+                                                    <li class="menu-item-has-children">
+                                                        <a href="@Url.Action("Index","Department", new { d="AppleTumUrunler"})">Apple</a>
+                                                        <ul>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="AppleTelefonlar"})">Telefon</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="AppleKulakliklar"})">Kulaklık</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="AppleSaatler"})">Saat</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="ApplePowerbank"})">Powerbank</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!--Single İtem end-->
+                                                    <!--Single İtem start-->
+                                                    <li class="menu-item-has-children">
+                                                        <a href="@Url.Action("Index","Department", new { d="XiaomiTumUrunler"})">Xiaomi</a>
+                                                        <ul>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="XiaomiTelefonlar"})">Telefon</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="XiaomiKulakliklar"})">Kulaklık</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="XiaomiSaatler"})">Saat</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="XiaomiPowerbank"})">Powerbank</a></li>
+
+                                                        </ul>
+                                                    </li>
+                                                    <!--Single İtem end-->
+                                                    <!--Single İtem start-->
+                                                    <li class="menu-item-has-children">
+                                                        <a href="@Url.Action("Index","Department", new { d="SamsungTumUrunler"})">Samsung</a>
+                                                        <ul>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="SamsungTelefonlar"})">Telefon</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="SamsungKulakliklar"})">Kulaklık</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="SamsungSaatler"})">Saat</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="SamsungPowerbank"})">Powerbank</a></li>
+
+                                                        </ul>
+                                                    </li>
+                                                    <!--Single İtem end-->
+                                                    <!--Single İtem start-->
+                                                    <li class="menu-item-has-children">
+                                                        <a href="@Url.Action("Index","Department", new { d="TumUrunler"})">Diğer Markalar</a>
+                                                        <ul>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="TumTelefonlar"})">Telefon</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="TumKulakliklar"})">Kulaklık</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="AkilliSaatler"})">Saat</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="TumPowerbankler"})">Powerbank</a></li>
+
+                                                        </ul>
+                                                    </li>
+                                                    <!--Single İtem end-->
+
+                                                </ul>
+                                            </li>
+
+                                            <li class="menu-item-has-children">
+                                                <a href="@Url.Action("Index","Department", new { d="TumKameralar"})"><i class="fa fa-camera"></i> Kameralar</a>
+                                                <!-- Mega Category Menu Start -->
+                                                <ul class="category-mega-menu">
+
+                                                    <!--Single İtem Start-->
+                                                    <li class="menu-item-has-children">
+                                                        <a href="@Url.Action("Index","Department", new { d="SonyKameralar"})">Sony</a>
+                                                        <ul>
+
+                                                            <li><a href="@Url.Action("Index","Department", new { d="SonyKameralar"})">Kameralar</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="SonyKameraKılıfları"})">Kamera Kılıfları</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="SonyKameraBataryası"})">Kamera Bataryası</a></li>
+
+                                                        </ul>
+                                                        <!--Single İtem End-->
+
+                                                    </li>
+
+                                                    <li class="menu-item-has-children">
+                                                        <a href="@Url.Action("Index","Department", new { d="CanonKameralar"})">Canon</a>
+                                                        <ul>
+
+                                                            <li><a href="@Url.Action("Index","Department", new { d="CanonKameralar"})">Kameralar</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="CanonKameraKılıfları"})">Kamera Kılıfları</a></li>
+                                                            <li><a href="@Url.Action("Index","Department", new { d="CanonKameraBataryası"})">Kamera Bataryası</a></li>
+
+                                                        </ul>
+                                                        <!--Single İtem End-->
+
+                                                    </li>
+
+
+                                                </ul>
+                                            </li>
+
+
+
+
+
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="active">
+                                                <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Anasayfa </a>
+
+                                            </li>
+                                            <li class="static">
+                                                <a href="#">helper <i class="fa fa-angle-down"></i></a>
+                                                <ul class="megamenu dropdown">
+                                                    <li class="mega-title">
+
+                                                        <ul>
+                                                            <li><a href="@Url.Action("Index","Compare")">Karşılaştır</a></li>
+                                                            <li><a href="@Url.Action("Index","Wishlist")">İstek Listesi</a></li>
+
+
+
+
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li class="mega-title">
+
+                                                        <ul>
+                                                            <li><a href="@Url.Action("Index","MyAccount")">Hesabım</a></li>
+                                                            <li><a href="@Url.Action("Login","Contact")">Giriş yap</a></li>
+                                                            <li><a href="@Url.Action("Register","Contact")">Kayıt ol</a></li>
+                                                            <li><a href="@Url.Action("Aboutus","Contact")">Hakkımızda</a></li>
+                                                            <li><a href="@Url.Action("Index","Contact")">İletişim</a></li>
+
+
+
+
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Index", "Department")">Ürünler</a>
+
+                                            </li>
+
+                                            <li><a href="@Url.Action("Index","Contact")">İletişim</a></li>
+                                            <li><a href="@Url.Action("Aboutus", "Contact")">Hakkımızda</a></li>
+                                            <li><a href="@Url.Action("Index","Wishlist")"><i class="fa fa-heart"></i></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 d-block d-lg-none"><div class="mobile-menu"></div></div>
+                    </div>
+                </div>
+            </div>
+            <!-- main menu area end -->
+
+        </header>
+        <!-- header area end -->
+
+
+
+
+        @RenderBody()
+
+
+
+
+
+        <!-- footer area start -->
+    <footer>
+
+        <div class="footer-top bg-soft-black pt-14 pb-14">
+            <div class="container">
+                <div class="footer-top-wrapper">
+                    <!-- footer main start -->
+                    <div class="footer-widget-area pt-40 pb-38 pb-sm-10">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="footer-widget mb-sm-30">
+                                        <div class="widget-title mb-10 mb-sm-6">
+                                            <h4>contact us</h4>
+                                        </div>
+                                        <div class="widget-body">
+                                            <ul class="location">
+                                                <li><i class="fa fa-envelope"></i>info@info.com</li>
+                                                <li><i class="fa fa-phone"></i>+90 0123 456 789</li>
+                                                <li>
+                                                    <i class="fa fa-map-marker"></i>Adres: 1234 sokak 1234/5 numara İstanbul/Türkiye
+                                                </li>
+                                            </ul>
+                                           
+                                        </div>
+                                    </div> <!-- single widget end -->
+                                </div> <!-- single widget column end -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="footer-widget mb-sm-30">
+                                        <div class="widget-title mb-10 mb-sm-6">
+                                            <h4>Hesabım</h4>
+                                        </div>
+                                        <div class="widget-body">
+                                            <ul>
+                                                <li><a href="@Url.Action("Index","MyAccount")">Hesabım</a></li>
+                                                <li><a href="@Url.Action("Cart","Basket")">Sepetim</a></li>
+                                                <li><a href="@Url.Action("Cart","Basket")">Ödeme</a></li>
+                                                <li><a href="@Url.Action("Index","Wishlist")">Favorilerim</a></li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div> <!-- single widget end -->
+                                </div> <!-- single widget column end -->
+
+
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="footer-widget mb-sm-30">
+                                        <div class="widget-title mb-10 mb-sm-6">
+                                            <h4>İletişim</h4>
+                                        </div>
+                                        <div class="widget-body">
+                                            <ul>
+                                                <li><a href="@Url.Action("Aboutus", "Contact")">Hakkımızda</a></li>
+                                                <li><a href="@Url.Action("Index","Contact")">Bize Ulaşın</a></li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div> <!-- single widget end -->
+                                </div> <!-- single widget column end -->
+
+
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="footer-widget mb-sm-30">
+                                        <div class="widget-title mb-10 mb-sm-6">
+                                            <h4>Ürünler</h4>
+                                        </div>
+                                        <div class="widget-body">
+                                            <ul>
+                                                <li><a href="@Url.Action("Index", "Department",new {d="TumTelefonlar"})">Telefon</a></li>
+                                                <li><a href="@Url.Action("Index", "Department",new {d="TumKulakliklar"})">Kulaklık</a></li>
+                                                <li><a href="@Url.Action("Index", "Department",new {d="AkilliSaatler"})">Saat</a></li>
+                                                <li><a href="@Url.Action("Index", "Department",new {d="TumBilgisayarlar"})">Bilgisayar</a></li>
+                                                <li><a href="@Url.Action("Index", "Department",new {d="TumKameralar"})">Kamera</a></li>
+                                                <li><a href="@Url.Action("Index", "Department",new {d="TumTabletler"})">Tablet</a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div> <!-- single widget end -->
+                                </div> <!-- single widget column end -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer main end -->
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </footer>
+        <!-- footer area end -->
+
+    </div>
+
+
+    <!-- Hızlı İnceleme kısmı-->
+    <div class="modal" id="quick_view">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- product details inner end -->
+                    <div class="product-details-inner">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="product-large-slider slick-arrow-style_2 mb-20">
+                                    <div class="pro-large-img">
+                                        <img src="~/wwwroot/img/product/product-details-img1.jpg" alt="" />
+                                    </div>
+                                    <div class="pro-large-img">
+                                        <img src="~/wwwroot/img/product/product-details-img2.jpg" alt="" />
+                                    </div>
+                                    <div class="pro-large-img">
+                                        <img src="~/wwwroot/img/product/product-details-img3.jpg" alt="" />
+                                    </div>
+                                    <div class="pro-large-img">
+                                        <img src="~/wwwroot/img/product/product-details-img4.jpg" alt="" />
+                                    </div>
+                                    <div class="pro-large-img">
+                                        <img src="~/wwwroot/img/product/product-details-img5.jpg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="pro-nav slick-padding2 slick-arrow-style_2">
+                                    <div class="pro-nav-thumb">
+                                        <img src="~/wwwroot/img/product/product-details-img1.jpg"
+                                             alt="" />
+                                    </div>
+                                    <div class="pro-nav-thumb">
+                                        <img src="~/wwwroot/img/product/product-details-img2.jpg"
+                                             alt="" />
+                                    </div>
+                                    <div class="pro-nav-thumb">
+                                        <img src="~/wwwroot/img/product/product-details-img3.jpg"
+                                             alt="" />
+                                    </div>
+                                    <div class="pro-nav-thumb">
+                                        <img src="~/wwwroot/img/product/product-details-img4.jpg"
+                                             alt="" />
+                                    </div>
+                                    <div class="pro-nav-thumb">
+                                        <img src="~/wwwroot/img/product/product-details-img5.jpg"
+                                             alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-7">
+                                <div class="product-details-des mt-md-34 mt-sm-34">
+                                    <h3><a href="product-details.html">External product 12</a></h3>
+                                    <div class="ratings">
+                                        <span class="good"><i class="fa fa-star"></i></span>
+                                        <span class="good"><i class="fa fa-star"></i></span>
+                                        <span class="good"><i class="fa fa-star"></i></span>
+                                        <span class="good"><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <div class="pro-review">
+                                            <span>1 Yorum</span>
+                                        </div>
+                                    </div>
+                                    <div class="availability mt-10">
+                                        <h5>Availability:</h5>
+                                        <span>1 in stock</span>
+                                    </div>
+                                    <div class="pricebox">
+                                        <span class="regular-price">$160.00</span>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br>
+                                        Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea
+                                        dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris
+                                        consequat nisi ut mauris efficitur lacinia.
+                                    </p>
+                                    <div class="quantity-cart-box d-flex align-items-center mt-20">
+                                        <div class="quantity">
+                                            <div class="pro-qty"><input type="text" value="1"></div>
+                                        </div>
+                                        <div class="action_link">
+                                            <a class="buy-btn" href="#">
+                                                add to cart<i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product details inner end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quick view modal end -->
+
+    <!-- Scroll to top start -->
+    <div class="scroll-top not-visible">
+        <i class="fa fa-angle-up"></i>
+    </div>
+    <!-- Scroll to Top End -->
+    <!--All jQuery, Third Party Plugins & Activation (main.js) Files-->
+    <script src="~/wwwroot/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- Jquery Min Js -->
+    <script src="~/wwwroot/js/vendor/jquery-3.3.1.min.js"></script>
+    <!-- Popper Min Js -->
+    <script src="~/wwwroot/js/vendor/popper.min.js"></script>
+    <!-- Bootstrap Min Js -->
+    <script src="~/wwwroot/js/vendor/bootstrap.min.js"></script>
+    <!-- Plugins Js-->
+    <script src="~/wwwroot/js/plugins.js"></script>
+    <!-- Ajax Mail Js -->
+    <script src="~/wwwroot/js/ajax-mail.js"></script>
+    <!-- Active Js -->
+    <script src="~/wwwroot/js/main.js"></script>
+    <!-- Switcher JS [Please Remove this when Choose your Final Projct] -->
+    <script src="~/wwwroot/js/switcher.js"></script>
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

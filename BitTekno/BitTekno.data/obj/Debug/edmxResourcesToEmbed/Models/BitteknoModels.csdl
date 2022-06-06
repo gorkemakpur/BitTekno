@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BitteknoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorID" />
+    </Key>
+    <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__ColorID__3E52440B" FromRole="Color" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RecordDate" Type="DateTime" Precision="3" />
+    <Property Name="IsValid" Type="Boolean" />
+    <Property Name="Reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RoleID" Type="Int32" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__Contact__RoleID__48CFD27E" FromRole="Contact" ToRole="Role" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__Order__ContactID__4E88ABD4" FromRole="Contact" ToRole="Order" />
+    <NavigationProperty Name="ProductComment" Relationship="BitteknoModel.FK__ProductCo__Conta__14270015" FromRole="Contact" ToRole="ProductComment" />
+    <NavigationProperty Name="Coupon" Relationship="BitteknoModel.FK__Coupon__ContactI__29221CFB" FromRole="Contact" ToRole="Coupon" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsValid" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProductDepartment" Relationship="Self.FK__ProductDe__Depar__440B1D61" FromRole="Department" ToRole="ProductDepartment" />
+  </EntityType>
+  <EntityType Name="Mark">
+    <Key>
+      <PropertyRef Name="MarkID" />
+    </Key>
+    <Property Name="MarkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MarkName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProductDescription" Relationship="Self.FK__ProductDe__MarkI__3A81B327" FromRole="Mark" ToRole="ProductDescription" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContactID" Type="Int32" />
+    <Property Name="OrderNumber" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SalesTax" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FullFilled" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="ShipDate" Type="DateTime" Precision="3" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="Paid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TransactStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ErrLoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ErrMsg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contact" Relationship="Self.FK__Order__ContactID__4E88ABD4" FromRole="Order" ToRole="Contact" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Order__52593CB8" FromRole="Order" ToRole="OrderDetail" />
+    <Property Name="isBasket" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="OrderNumber" Type="Int64" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Discount" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FullFilled" Type="Boolean" />
+    <Property Name="ShipDate" Type="DateTime" Precision="3" />
+    <Property Name="BillDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__OrderDeta__Order__52593CB8" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__Produ__5165187F" FromRole="OrderDetail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="OrderPayment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Allowed" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductBarcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Stock" Type="Int32" />
+    <Property Name="PriceOutput" Type="Int32" />
+    <Property Name="OldPriceOutput" Type="Int32" />
+    <Property Name="Reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsValid" Type="Boolean" />
+    <Property Name="RecordDate" Type="DateTime" Precision="3" />
+    <Property Name="SizeID" Type="Int32" />
+    <Property Name="ColorID" Type="Int32" />
+    <NavigationProperty Name="Color" Relationship="Self.FK__Product__ColorID__3E52440B" FromRole="Product" ToRole="Color" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Produ__5165187F" FromRole="Product" ToRole="OrderDetail" />
+    <NavigationProperty Name="Size" Relationship="Self.FK__Product__SizeID__3D5E1FD2" FromRole="Product" ToRole="Size" />
+    <NavigationProperty Name="ProductComment" Relationship="Self.FK__ProductCo__Produ__4BAC3F29" FromRole="Product" ToRole="ProductComment" />
+    <Property Name="ProductDescriptionID" Type="Int32" />
+    <NavigationProperty Name="ProductDescription" Relationship="BitteknoModel.FK__Product__Product__6383C8BA" FromRole="Product" ToRole="ProductDescription" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ImagesID" Type="Int32" />
+    <NavigationProperty Name="Images" Relationship="BitteknoModel.FK__Images__ProductI__00200768" FromRole="Product" ToRole="Images" />
+    <NavigationProperty Name="Images1" Relationship="BitteknoModel.FK__Product__ImagesI__01142BA1" FromRole="Product" ToRole="Images" />
+    <Property Name="ProductFeaturesID" Type="Int32" />
+    <NavigationProperty Name="ProductFeatures" Relationship="BitteknoModel.FK__Product__Product__17036CC0" FromRole="Product" ToRole="ProductFeatures" />
+  </EntityType>
+  <EntityType Name="ProductComment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Point" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ProductCo__Produ__4BAC3F29" FromRole="ProductComment" ToRole="Product" />
+    <Property Name="ContactID" Type="Int32" />
+    <NavigationProperty Name="Contact" Relationship="BitteknoModel.FK__ProductCo__Conta__14270015" FromRole="ProductComment" ToRole="Contact" />
+  </EntityType>
+  <EntityType Name="ProductDepartment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductDescriptionID" Type="Int32" />
+    <Property Name="RecordDate" Type="DateTime" Precision="3" />
+    <Property Name="Reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsValid" Type="Boolean" />
+    <Property Name="DepartmentID" Type="Int32" />
+    <NavigationProperty Name="Department" Relationship="Self.FK__ProductDe__Depar__440B1D61" FromRole="ProductDepartment" ToRole="Department" />
+    <NavigationProperty Name="ProductDescription" Relationship="Self.FK__ProductDe__Produ__4316F928" FromRole="ProductDepartment" ToRole="ProductDescription" />
+  </EntityType>
+  <EntityType Name="ProductDescription">
+    <Key>
+      <PropertyRef Name="ProductDescriptionID" />
+    </Key>
+    <Property Name="ProductDescriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductDescriptionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sale" Type="Boolean" />
+    <Property Name="Reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsValid" Type="Boolean" />
+    <Property Name="RecordDate" Type="DateTime" Precision="3" />
+    <Property Name="MarkID" Type="Int32" />
+    <NavigationProperty Name="Mark" Relationship="Self.FK__ProductDe__MarkI__3A81B327" FromRole="ProductDescription" ToRole="Mark" />
+    <NavigationProperty Name="ProductDepartment" Relationship="Self.FK__ProductDe__Produ__4316F928" FromRole="ProductDescription" ToRole="ProductDepartment" />
+    <NavigationProperty Name="Product" Relationship="BitteknoModel.FK__Product__Product__6383C8BA" FromRole="ProductDescription" ToRole="Product" />
+    <Property Name="PriceOutput" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contact" Relationship="Self.FK__Contact__RoleID__48CFD27E" FromRole="Role" ToRole="Contact" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="SizeID" />
+    </Key>
+    <Property Name="SizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SizeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TypeID" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__SizeID__3D5E1FD2" FromRole="Size" ToRole="Product" />
+    <NavigationProperty Name="SizeType" Relationship="Self.FK__Size__TypeID__2A4B4B5E" FromRole="Size" ToRole="SizeType" />
+  </EntityType>
+  <EntityType Name="SizeType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Size" Relationship="Self.FK__Size__TypeID__2A4B4B5E" FromRole="SizeType" ToRole="Size" />
+  </EntityType>
+  <Association Name="FK__Product__ColorID__3E52440B">
+    <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ColorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Contact__RoleID__48CFD27E">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__ContactID__4E88ABD4">
+    <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="ContactID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductDe__Depar__440B1D61">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="ProductDepartment" Type="Self.ProductDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="ProductDepartment">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductDe__MarkI__3A81B327">
+    <End Role="Mark" Type="Self.Mark" Multiplicity="0..1" />
+    <End Role="ProductDescription" Type="Self.ProductDescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mark">
+        <PropertyRef Name="MarkID" />
+      </Principal>
+      <Dependent Role="ProductDescription">
+        <PropertyRef Name="MarkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__52593CB8">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Produ__5165187F">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__SizeID__3D5E1FD2">
+    <End Role="Size" Type="Self.Size" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="SizeID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="SizeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductCo__Produ__4BAC3F29">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductComment">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductDe__Produ__4316F928">
+    <End Role="ProductDescription" Type="Self.ProductDescription" Multiplicity="0..1" />
+    <End Role="ProductDepartment" Type="Self.ProductDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductDescription">
+        <PropertyRef Name="ProductDescriptionID" />
+      </Principal>
+      <Dependent Role="ProductDepartment">
+        <PropertyRef Name="ProductDescriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Size__TypeID__2A4B4B5E">
+    <End Role="SizeType" Type="Self.SizeType" Multiplicity="0..1" />
+    <End Role="Size" Type="Self.Size" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SizeType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Size">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BitteknoEntitiess" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Color" EntityType="Self.Color" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" />
+    <EntitySet Name="Department" EntityType="Self.Department" />
+    <EntitySet Name="Mark" EntityType="Self.Mark" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
+    <EntitySet Name="OrderPayment" EntityType="Self.OrderPayment" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="ProductComment" EntityType="Self.ProductComment" />
+    <EntitySet Name="ProductDepartment" EntityType="Self.ProductDepartment" />
+    <EntitySet Name="ProductDescription" EntityType="Self.ProductDescription" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Size" EntityType="Self.Size" />
+    <EntitySet Name="SizeType" EntityType="Self.SizeType" />
+    <AssociationSet Name="FK__Product__ColorID__3E52440B" Association="Self.FK__Product__ColorID__3E52440B">
+      <End Role="Color" EntitySet="Color" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Contact__RoleID__48CFD27E" Association="Self.FK__Contact__RoleID__48CFD27E">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__ContactID__4E88ABD4" Association="Self.FK__Order__ContactID__4E88ABD4">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductDe__Depar__440B1D61" Association="Self.FK__ProductDe__Depar__440B1D61">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="ProductDepartment" EntitySet="ProductDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductDe__MarkI__3A81B327" Association="Self.FK__ProductDe__MarkI__3A81B327">
+      <End Role="Mark" EntitySet="Mark" />
+      <End Role="ProductDescription" EntitySet="ProductDescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__52593CB8" Association="Self.FK__OrderDeta__Order__52593CB8">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Produ__5165187F" Association="Self.FK__OrderDeta__Produ__5165187F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__SizeID__3D5E1FD2" Association="Self.FK__Product__SizeID__3D5E1FD2">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductCo__Produ__4BAC3F29" Association="Self.FK__ProductCo__Produ__4BAC3F29">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductComment" EntitySet="ProductComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductDe__Produ__4316F928" Association="Self.FK__ProductDe__Produ__4316F928">
+      <End Role="ProductDescription" EntitySet="ProductDescription" />
+      <End Role="ProductDepartment" EntitySet="ProductDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Size__TypeID__2A4B4B5E" Association="Self.FK__Size__TypeID__2A4B4B5E">
+      <End Role="SizeType" EntitySet="SizeType" />
+      <End Role="Size" EntitySet="Size" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Product__6383C8BA" Association="BitteknoModel.FK__Product__Product__6383C8BA">
+      <End Role="ProductDescription" EntitySet="ProductDescription" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <EntitySet Name="Images" EntityType="BitteknoModel.Images" />
+    <AssociationSet Name="FK__Images__ProductI__00200768" Association="BitteknoModel.FK__Images__ProductI__00200768">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Images" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__ImagesI__01142BA1" Association="BitteknoModel.FK__Product__ImagesI__01142BA1">
+      <End Role="Images" EntitySet="Images" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductCo__Conta__14270015" Association="BitteknoModel.FK__ProductCo__Conta__14270015">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="ProductComment" EntitySet="ProductComment" />
+    </AssociationSet>
+    <EntitySet Name="ProductFeatures" EntityType="BitteknoModel.ProductFeatures" />
+    <AssociationSet Name="FK__Product__Product__17036CC0" Association="BitteknoModel.FK__Product__Product__17036CC0">
+      <End Role="ProductFeatures" EntitySet="ProductFeatures" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <EntitySet Name="Coupon" EntityType="BitteknoModel.Coupon" />
+    <AssociationSet Name="FK__Coupon__ContactI__29221CFB" Association="BitteknoModel.FK__Coupon__ContactI__29221CFB">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Coupon" EntitySet="Coupon" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK__Product__Product__6383C8BA">
+    <End Type="BitteknoModel.ProductDescription" Role="ProductDescription" Multiplicity="0..1" />
+    <End Type="BitteknoModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductDescription">
+        <PropertyRef Name="ProductDescriptionID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductDescriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="ImagesID" />
+    </Key>
+    <Property Name="ImagesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImagesUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductID" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="BitteknoModel.FK__Images__ProductI__00200768" FromRole="Images" ToRole="Product" />
+    <NavigationProperty Name="Product1" Relationship="BitteknoModel.FK__Product__ImagesI__01142BA1" FromRole="Images" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__Images__ProductI__00200768">
+    <End Type="BitteknoModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="BitteknoModel.Images" Role="Images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__ImagesI__01142BA1">
+    <End Type="BitteknoModel.Images" Role="Images" Multiplicity="0..1" />
+    <End Type="BitteknoModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Images">
+        <PropertyRef Name="ImagesID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ImagesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductCo__Conta__14270015">
+    <End Type="BitteknoModel.Contact" Role="Contact" Multiplicity="0..1" />
+    <End Type="BitteknoModel.ProductComment" Role="ProductComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="ContactID" />
+      </Principal>
+      <Dependent Role="ProductComment">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProductFeatures">
+    <Key>
+      <PropertyRef Name="ProductFeaturesID" />
+    </Key>
+    <Property Name="ProductFeaturesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Memory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ScreenType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FrontCamera" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BackCamera" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Battery" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="processor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="BitteknoModel.FK__Product__Product__17036CC0" FromRole="ProductFeatures" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__Product__Product__17036CC0">
+    <End Type="BitteknoModel.ProductFeatures" Role="ProductFeatures" Multiplicity="0..1" />
+    <End Type="BitteknoModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductFeatures">
+        <PropertyRef Name="ProductFeaturesID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductFeaturesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsValid" Type="Boolean" />
+    <Property Name="reference1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="reference2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContactID" Type="Int32" />
+    <NavigationProperty Name="Contact" Relationship="BitteknoModel.FK__Coupon__ContactI__29221CFB" FromRole="Coupon" ToRole="Contact" />
+    <Property Name="Discount" Type="Int32" />
+    <Property Name="IsUsed" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK__Coupon__ContactI__29221CFB">
+    <End Type="BitteknoModel.Contact" Role="Contact" Multiplicity="0..1" />
+    <End Type="BitteknoModel.Coupon" Role="Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="ContactID" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

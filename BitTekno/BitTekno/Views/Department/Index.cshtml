@@ -1,0 +1,251 @@
+﻿@model BitTekno.data.Models.Department
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var productList = BitTekno.Helper.ProductDescriptionList(Model.DepartmentID);
+}
+
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Anasayfa</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Ürünler</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+<!-- page wrapper start -->
+<div class="page-main-wrapper">
+    <div class="container">
+        <div class="row">
+            <!-- sidebar start -->
+            <div class="col-lg-3 order-2 order-lg-1">
+                <div class="shop-sidebar-wrap mt-md-28 mt-sm-28">
+                    <!-- sidebar categorie start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="sidebar-category">
+                            <ul>
+                                <li class="title"><i class="fa fa-bars"></i> Kategoriler</li>
+                                <li><a href="@Url.Action("Index","Department",new {d="TumTelefonlar"})">Telefon</a></li>
+                                <li><a href="@Url.Action("Index","Department",new {d="AkilliSaatler"})">Saat</a></li>
+                                <li><a href="@Url.Action("Index","Department",new {d="TumKulakliklar"})">Kulaklık</a></li>
+                                <li><a href="@Url.Action("Index","Department",new {d="Bilgisayarlar"})">Bilgisayar</a></li>
+                                <li><a href="@Url.Action("Index","Department",new {d="TumTabletler"})">Tablet</a></li>
+                                
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- sidebar categorie start -->
+                    <!-- manufacturer start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="sidebar-title mb-10">
+                            <h3>Markalar</h3>
+                        </div>
+                        <div class="sidebar-widget-body">
+                            <ul>
+                                <li><a href="@Url.Action("Index","Department",new {d="AppleTumUrunler"})"><i class="fa fa-angle-right"></i>Apple</a></li>
+                                <li><a href="@Url.Action("Index","Department",new {d="XiaomiTumUrunler"})"><i class="fa fa-angle-right"></i>Xiaomi</a></li>
+                                <li><a href="@Url.Action("Index","Department",new {d="HuaweiTumUrunler"})"><i class="fa fa-angle-right"></i>Huawei</a></li>
+                                <li><a href="@Url.Action("Index","Department",new {d="SamsungTumUrunler"})"><i class="fa fa-angle-right"></i>Samsung</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- manufacturer end -->
+                    <!-- pricing filter start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="sidebar-title mb-10">
+                            <h3>Fiyat filtreleme</h3>
+                        </div>
+                        <div class="sidebar-widget-body">
+                            <div class="price-range-wrap">
+                                <div class="price-range" data-min="50" data-max="40000"></div>
+                                <div class="range-slider">
+                                    <form action="#" class="d-flex justify-content-between">
+                                        <button class="filter-btn">filter</button>
+                                        <div class="price-input d-flex align-items-center">
+                                            <label for="amount">Fiyat: </label>
+                                            <input type="text" id="amount">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- pricing filter end -->
+                    <!-- product size start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="sidebar-title mb-10">
+                            <h3>Ram</h3>
+                        </div>
+                        <div class="sidebar-widget-body">
+                            <ul>
+                                <li><i class="fa fa-angle-right"></i><a href="#">2</a><span>(10)</span></li>
+                                <li><i class="fa fa-angle-right"></i><a href="#">4</a><span>(12)</span></li>
+                                <li><i class="fa fa-angle-right"></i><a href="#">6</a><span>(20)</span></li>
+                                <li><i class="fa fa-angle-right"></i><a href="#">8</a><span>(12)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- product size end -->
+                    <!-- product tag start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="sidebar-title mb-10">
+                            <h3>Etiketler</h3>
+                        </div>
+                        <div class="sidebar-widget-body">
+                            <div class="product-tag">
+                                <a href="#">Kamera</a>
+                                <a href="#">Bilgisayar</a>
+                                <a href="#">Tablet</a>
+                                <a href="#">Saat</a>
+                                <a href="#">Telefon</a>
+                                <a href="#">Kulaklık</a>
+                                <a href="#">Çevre Birimleri</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product tag end -->
+
+                </div>
+            </div>
+            <!-- sidebar end -->
+            <!-- product main wrap start -->
+            <div class="col-lg-9 order-1 order-lg-2">
+
+                <!-- product view wrapper area start -->
+                <div class="shop-product-wrapper pt-34">
+                    <!-- shop product top wrap start -->
+                    <div class="shop-top-bar">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-6">
+                                <div class="top-bar-left">
+                                   
+                                    <div class="product-amount">
+                                        <p>
+                                            @productList.Count() <span>ürün listelendi</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-6">
+                                <div class="top-bar-right">
+                                    <div class="product-short">
+                                        <p>Sıralama : </p>
+                                        <select class="nice-select" name="sortby">
+                                            <option value="trending">Alaka düzeyi</option>
+                                            <option value="name">İsim (A &gt; Z)</option>
+                                            <option value="name">İsim (Z &gt; A)</option>
+                                            <option value="price-desc">Fiyat (Düşük &gt; Yüksek)</option>
+                                            <option value="price-asc">Fiyat (Yüksek &gt; Düşük)</option>
+                                            <option value="rating">Puan (en yüksek)</option>
+                                           
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- shop product top wrap start -->
+                    <!-- product item start -->
+                    <div class="shop-product-wrap grid row">
+                        @foreach (var item in productList)
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <!-- product single grid item start -->
+                                <div class="product-item fix mb-30">
+                                    <div class="product-thumb">
+                                        <a href="@Url.Action("Detail","Product",new {id=item.ProductDescriptionID})">
+                                            <img src="~/wwwroot/img/product/@item.ProductImage" class="img-pri" alt="" style="background-size:cover">
+                                            <img src="~/wwwroot/img/product/@item.Reference1" class="img-sec" alt="">
+                                        </a>
+                                        <div class="product-label">
+                                            
+                                                @if (item.IsValid == true)
+                                                {
+                                                <span style="font-size:10px">
+                                                    stokta
+                                                </span>
+                                                }
+                                            <!--ürün kartının sol üstündeki yuvarlak kısım-->
+                                        </div>
+                                        <div class="product-action-link">
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" data-placement="left" title="İncele"><i class="fa fa-search"></i></span> </a>
+                                            <a href="#" data-toggle="tooltip" data-placement="left" title="İstek Listesi"><i class="fa fa-heart-o"></i></a>
+                                            <a href="#" data-toggle="tooltip" data-placement="left" title="Karşılaştır"><i class="fa fa-refresh"></i></a>
+                                            <a href="#" data-toggle="tooltip" data-placement="left" title="Sepete Ekle"><i class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <h4><a href="product-details.html">@item.ProductDescriptionName</a></h4>
+                                        <div class="pricebox">
+                                            <span class="regular-price">@item.PriceOutput <span>₺</span></span>
+
+
+
+
+
+
+
+                                            <div class="ratings">
+                                                <span class="good"><i class="fa fa-star"></i></span>
+                                                <span class="good"><i class="fa fa-star"></i></span>
+                                                <span class="good"><i class="fa fa-star"></i></span>
+                                                <span class="good"><i class="fa fa-star"></i></span>
+                                                <span class="good"><i class="fa fa-star"></i></span>
+                                               
+
+
+                                                <div class="pro-review">
+                                                    <span>Yorum</span>
+                                                </div>
+                                            </div>
+                                            <!-- Yorum ve yıldız sayısı -->
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product single grid item end -->
+                                
+                            </div> <!-- product single column end -->
+
+                        }
+                    </div>
+                    <!-- product item end -->
+                </div>
+                <!-- product view wrapper area end -->
+                <!-- start pagination area -->
+                <div class="paginatoin-area text-center pt-28">
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="pagination-box">
+                                <li><a class="Previous" href="#">Önceki</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a class="Next" href="#"> Sonraki </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- end pagination area -->
+
+            </div>
+            <!-- product main wrap end -->
+        </div>
+    </div>
+</div>
+<!-- page wrapper end -->

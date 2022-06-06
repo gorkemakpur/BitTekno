@@ -1,0 +1,79 @@
+﻿@model List<BitTekno.data.Models.OrderDetail>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+<div class="cart-main-wrapper mt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Cart Table Area -->
+                <div class="cart-table table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="pro-title"></th>
+                                <th class="pro-title">Ürün İsmi</th>
+                                <th class="pro-title">Ürün Barkodu</th>
+                                <th class="pro-price">Fiyat </th>
+                                <th class="pro-quantity">Adet</th>
+                                <th class="pro-remove">Sil </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="pro-thumbnail">
+                                        <a href="#">
+                                            <img class="img-fluid" src="~/wwwroot/img/product/@item.Product.Reference1"
+                                                 alt="Product" />
+                                        </a>
+                                    </td>
+                                    <td class="pro-title"><a href="#">@item.Product.ProductName</a></td>
+                                    <td class="pro-title"><a href="#">@item.Product.ProductBarcode</a></td>
+                                    <td class="pro-price"><span>@item.Price ₺</span></td>
+                                    <td class="pro-quantity">
+                                        <div class="pro-qty"><input type="text" value="1"></div>
+                                    </td>
+                                    <td class="pro-remove"><a href="@Url.Action("RemoveDetail","Basket", new { orderDetailId= item.OrderDetailID} )"><i class="fa fa-trash-o"></i></a></td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cart-update-option d-block d-md-flex justify-content-between">
+                    <div class="apply-coupon-wrapper">
+                        <form action="@Url.Action("Apply","DiscountCoupon")" method="post" class=" d-block d-md-flex">
+                            <input id="Coupon" name="Coupon" type="text" placeholder="Kupon Kodunuzu Giriniz" required  />
+                            <button class="sqr-btn">Kullan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto">
+                <!-- Cart Calculation Area -->
+                <div class="cart-calculator-wrapper mb-20">
+                    <div class="cart-calculate-items">
+                        <h3>Sepet Toplamı</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr class="total">
+                                    <td>Toplam</td>
+                                    <td class="total-amount">@Model.Sum(x => x.Price - x.Discount) ₺</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <a href="checkout.html" class="sqr-btn d-block">Ödeme yap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

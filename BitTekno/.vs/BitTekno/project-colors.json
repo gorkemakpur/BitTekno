@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "80ed0139-ad91-4725-abed-5f7b70840cd4": {
+      "ProjectGuid": "80ed0139-ad91-4725-abed-5f7b70840cd4",
+      "DisplayName": "BitTekno",
+      "ColorIndex": 0
+    },
+    "58c046a1-f069-4ce7-87b2-5b3df9747e92": {
+      "ProjectGuid": "58c046a1-f069-4ce7-87b2-5b3df9747e92",
+      "DisplayName": "BitTekno.data",
+      "ColorIndex": 1
+    },
+    "faa072b0-d748-4538-8eaf-10c96d25c997": {
+      "ProjectGuid": "faa072b0-d748-4538-8eaf-10c96d25c997",
+      "DisplayName": "Data",
+      "ColorIndex": 2
+    },
+    "2a7698db-44f8-4829-a2c3-7e8fb2f25bc4": {
+      "ProjectGuid": "2a7698db-44f8-4829-a2c3-7e8fb2f25bc4",
+      "DisplayName": "BitTekno.DataAccess",
+      "ColorIndex": 3
+    },
+    "366a4f19-233e-4148-b885-45d1a739470c": {
+      "ProjectGuid": "366a4f19-233e-4148-b885-45d1a739470c",
+      "DisplayName": "BitTekno.Base",
+      "ColorIndex": 4
+    },
+    "15531a62-de36-4338-a90d-8d152e6a510d": {
+      "ProjectGuid": "15531a62-de36-4338-a90d-8d152e6a510d",
+      "DisplayName": "ClassLibrary1",
+      "ColorIndex": 5
+    },
+    "3aed155e-2bfa-458a-8c72-a0efccda1c1e": {
+      "ProjectGuid": "3aed155e-2bfa-458a-8c72-a0efccda1c1e",
+      "DisplayName": "BitTekno.Business",
+      "ColorIndex": 6
+    },
+    "00919f11-bb79-4691-a381-09cba70c44c7": {
+      "ProjectGuid": "00919f11-bb79-4691-a381-09cba70c44c7",
+      "DisplayName": "Business",
+      "ColorIndex": 7
+    },
+    "6351bfc3-0629-429d-b2a4-b8e01897552c": {
+      "ProjectGuid": "6351bfc3-0629-429d-b2a4-b8e01897552c",
+      "DisplayName": "UI",
+      "ColorIndex": 8
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 9
+}

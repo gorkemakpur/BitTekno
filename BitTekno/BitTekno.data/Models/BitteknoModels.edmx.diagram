@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a99fddcc4f0a416baedc55fbbdcff0c6" Name="Diagram1" ZoomLevel="36">
+        <EntityTypeShape EntityType="BitteknoModel.Color" Width="1.5" PointX="1.125" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.Contact" Width="1.5" PointX="3.125" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.Department" Width="1.5" PointX="17.625" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.Mark" Width="1.5" PointX="15.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.Order" Width="1.5" PointX="5.625" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.OrderDetail" Width="1.5" PointX="10.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.OrderPayment" Width="1.5" PointX="11" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.Product" Width="1.5" PointX="4.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.ProductComment" Width="1.5" PointX="8.125" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.ProductDepartment" Width="1.5" PointX="15.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.ProductDescription" Width="1.5" PointX="13.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.Role" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.Size" Width="1.5" PointX="2.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitteknoModel.SizeType" Width="1.5" PointX="0.5" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="BitteknoModel.FK__Product__ColorID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__Contact__RoleID__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__Order__ContactID__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__ProductDe__Depar__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__ProductDe__MarkI__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__OrderDeta__Order__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__OrderDeta__Produ__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__Product__SizeID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__ProductCo__Produ__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__ProductDe__Produ__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__Size__TypeID__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="BitteknoModel.FK__Product__Product__6383C8BA" />
+        <EntityTypeShape EntityType="BitteknoModel.Images" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="BitteknoModel.FK__Images__ProductI__00200768" />
+        <AssociationConnector Association="BitteknoModel.FK__Product__ImagesI__01142BA1" />
+        <EntityTypeShape EntityType="BitteknoModel.ProductFeatures" Width="1.5" PointX="13.625" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="BitteknoModel.FK__Product__Product__17036CC0" />
+        <EntityTypeShape EntityType="BitteknoModel.Coupon" Width="1.5" PointX="0.875" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="BitteknoModel.FK__Coupon__ContactI__29221CFB" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

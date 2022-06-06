@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- my account wrapper start -->
+<div class="my-account-wrapper mt-20 mb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- My Account Page Start -->
+                <div class="myaccount-page-wrapper">
+                    <!-- My Account Tab Menu Start -->
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="#dashboad" class="active" data-toggle="tab">
+                                    <i class="fa fa-dashboard"></i>
+                                    Panel
+                                </a>
+                                <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Siparişler</a>
+                              
+                                <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i> Adres</a>
+                                <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Hesap Bilgileri</a>
+                                <a href="login-register.html"><i class="fa fa-sign-out"></i> Çıkış Yap</a>
+                            </div>
+                        </div>
+                        <!-- My Account Tab Menu End -->
+                        <!-- My Account Tab Content Start -->
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Kullanıcı Paneli</h3>
+                                        <div class="welcome">
+                                            <p>Merhaba, <strong>Aziz Görkem</strong> 
+                                            </div>
+                                        <p class="mb-0">Hesap kontrol panelinizden. son siparişlerinizi kolayca kontrol edebilir, görüntüleyebilir, teslimat ve fatura adreslerinizi yönetebilir, şifrenizi ve hesap ayrıntılarınızı düzenleyebilirsiniz.</p>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade" id="orders" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Orders</h3>
+                                        <div class="myaccount-table table-responsive text-center">
+                                            <table class="table table-bordered">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Sipariş</th>
+                                                        <th>Tarihi</th>
+                                                        <th>Durumu</th>
+                                                        <th>Toplam</th>
+                                                        <th>Detay</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>22 Ağustos 2018</td>
+                                                        <td>Gönderildi</td>
+                                                        <td>3000TL</td>
+                                                        <td><a href="cart.html" class="check-btn sqr-btn ">Sipariş Detay</a></td>
+                                                    </tr>
+                                               
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                             
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade" id="address-edit" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Sipariş Adresi</h3>
+                                        <address>
+                                            <p><strong>Aziz Görkem Akpur</strong></p>
+                                            <p>
+                                                123 sokak 123 numara daire 123<br>
+                                                İstanbul, Türkiye
+                                            </p>
+                                            <p>Telefon: (123) 456-7890</p>
+                                        </address>
+                                        <a href="#" class="check-btn sqr-btn "><i class="fa fa-edit"></i> Adresi Düzenle</a>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Hesap Bilgileri</h3>
+                                        <div class="account-details-form">
+                                            <form action="#">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="first-name" class="required">Adınız</label>
+                                                            <input type="text" id="first-name" placeholder="Adınız" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="last-name" class="required">Soyadınız</label>
+                                                            <input type="text" id="last-name" placeholder="Soyadınız" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="single-input-item">
+                                                    <label for="email" class="required">Email adresi</label>
+                                                    <input type="email" id="email" placeholder="Email Adresi" />
+                                                </div>
+                                                <fieldset>
+                                                    <legend>Şifre Değiştir</legend>
+                                                    <div class="single-input-item">
+                                                        <label for="current-pwd" class="required">Şuanki Şifre</label>
+                                                        <input type="password" id="current-pwd" placeholder="Şuanki Şifre" />
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="single-input-item">
+                                                                <label for="new-pwd" class="required">Yeni Şifre</label>
+                                                                <input type="password" id="new-pwd" placeholder="Yeni Şifre" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="single-input-item">
+                                                                <label for="confirm-pwd" class="required">Şifre Doğrulama</label>
+                                                                <input type="password" id="confirm-pwd" placeholder="Şifre Doğrulama" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <div class="single-input-item">
+                                                    <button class="check-btn sqr-btn ">Değişiklikleri Kaydet</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> <!-- Single Tab Content End -->
+                            </div>
+                        </div> <!-- My Account Tab Content End -->
+                    </div>
+                </div> <!-- My Account Page End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- my account wrapper end -->
